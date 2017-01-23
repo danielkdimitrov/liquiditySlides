@@ -10,9 +10,8 @@
 - Illiquid assets included the portfolios of many investors
 	+ long-term institutional investment (pension funds, endowments, sovereign wealth funds etc.)
 	+ personal finance (a house, real estate, private company shares, art, jewelry, etc.)
-- Need for a clear view on
-	+ how to incorporate their properties into the allocation decision
-	+ how illiquidity affects consumption over the long term
+- How to incorporate their properties into the allocation decision?
+- How illiquidity affects consumption over the long term?
 
 
 # What is liquidity?
@@ -43,14 +42,23 @@ Ang, Papanikolaou and Westerfield: Portfolio Choice with Illiquid Assets (2013),
 
 The Market
 --------------
-$$\frac{\bm{dS}_t}{\bm{S}_t} = \bm{\mu} dt + \bm{\sigma}\bm{dZ}_t$$
 
-$$\frac{dS_t}{S_t} = \bm{\mu} dt + \sigma dZ_t$$
-$$\frac{\bm{dS}_t}{\bm{S}_t} = (r \mathbb{1} + \bm{\sigma}\bm{\lambda}) dt + \bm{\sigma}\bm{dZ}_t $$
+- Risk-free Money Market Account
+\begin{equation}
+dB_t / B_t = r_t dt
+\end{equation}
+
+- Risky Assets
+
+$$\begin{aligned}
+\frac{\bm{dS}_t}{\bm{S}_t} & = \bm{\mu} dt + \bm{\sigma}\bm{dZ}_t \\
+& = (r \mathbb{1} + \bm{\sigma}\bm{\lambda}) dt + \bm{\sigma}\bm{dZ}_t \end{aligned}$$
+
+where $\bm{\lambda} = \bm{\sigma} ^{-1}(\bm{\mu} - r \mathbb{1})$ is Price of Risk
 
 --------------
 
-### Wealth Dynamics
+- Wealth Dynamics
 
 \begin{equation}\label{eq:WealthWithConsumption}
 \begin{aligned}
@@ -59,32 +67,46 @@ $$\frac{\bm{dS}_t}{\bm{S}_t} = (r \mathbb{1} + \bm{\sigma}\bm{\lambda}) dt + \bm
 \end{aligned}
 \end{equation}
 
-### Preferences
+. . .
+
+- Value Function:
 
 \begin{equation}\label{eq:indirectUtility}
 V(W,t)= \sup_{(\pi_s,C_s)\in\mathbb{A}_t}E_{t}\int\limits_{t}^{\infty}{\mathrm{e}^{-\beta (s-t)}u(C_s)}ds
 \end{equation}
 
-## The Market is Complete ...
+. . .
 
-- A *complete market* is one, in which any future uncertain pay-off is attainable, in the sense that a portfolio strategy can be constructed that will produce any possible uncertain pay-off in the future given only that the strategy has an appropriate initial budget.
+- CRRA Utility: 
+$$ u(C_t) = \frac{C_t^{1-\gamma}}{1-\gamma}$$
+
+--------------
+
+**The Market is Complete ...**
+
+- A *complete market* is one, in which any future uncertain pay-off is *attainable*. 
+
+	- A portfolio strategy can be constructed which will produce any uncertain pay-off in the future given initial budget.
+
+	- The same number of assets as the number of risk sources (B.M.s)
 
 $$
 \frac{dS_{it}}{S_{it}} = (r + \sum_{j=1}^{n}\sigma_{ij}\lambda_{jt}) dt + \sum_{j=1}^{n}\sigma_{ij}dZ_{jt} ,\quad \quad i=1,...,n
 $$
 
-
-## ... and arbitrage free
-
-- An *arbitrage opportunity* is a self-financing trading strategy which starting with zero investment cost generates a non-negative payoff with probability 1 and positive payoff with positive probability.
-
-. . .
-
-- For every possible sate of the world we can set up a unique self-financing strategy that mimics its payoff.
-
 --------
 
-- The Martingale Solution Method 
+ **... and arbitrage free...**
+
+- An *arbitrage opportunity* is a self-financing trading strategy which starting with zero investment cost generates 
+	- non-negative payoff with probability 1 and
+	- positive payoff with positive probability.
+	
+--------
+
+- The Martingale Solution Method: 
+	- choose directly the optimally invested wealth in complete and arb. free market
+	- prices are uniquely determined and any future payoff can be replicated by a specific trading strategy.
 
 $$
 \begin{equation}\label{eq:ProblemOptStatic}
@@ -97,7 +119,8 @@ $$
 
 . . .
 
-- Dynamic Programming Approach
+- Dynamic Programming Approach: 
+	- choose optimizing strategies for $c$ and $\bm{\pi}$
 
 $$
 \begin{equation}\label{eq:ProblemOptDynamic}
@@ -180,7 +203,7 @@ $\xi^* = arg\max_\xi H(\xi)$
 
 ### Optimal Consumption
 
-$$u'(cw) = V_w$$ 
+- The Euler Equation: $$u'(cw) = V_w$$ 
 
 \begin{equation}\label{eq:consumptionAng}
 c^{opt} = \Big((1-\gamma)H(\xi)-H'(\xi)\xi \Big) ^{-\frac{1}{\gamma}} (1-\xi)^{-1}
@@ -196,7 +219,7 @@ c^{opt} = \Big((1-\gamma)H(\xi)-H'(\xi)\xi \Big) ^{-\frac{1}{\gamma}} (1-\xi)^{-
 
 ---------
 
-- The Bellman Equation Discretized & Decomposed
+### The Bellman Equation Discretized & Decomposed
 
 $\begin{aligned}
 V(W_t,\xi_t)   =   & \max_{(\theta_t,dI_t,c_t \in \mathcal{R})}\{u(c_t (1-\xi_t) W)\Delta t \\
@@ -205,13 +228,16 @@ W_t^{(1-\gamma)} H(\xi_t)  =  & \max_{(\theta_t,dI_t,c_t \in \mathcal{R})}\{W_t^
 	& + \mathrm{e}^{-\beta \Delta t} E_{W,\xi}[ W_{t+\Delta t}^{(1-\gamma)} H(\xi_{t+\Delta t})]\} 
 \end{aligned}$
 
+. . .
+
 $\begin{aligned}
     W_t^{(1-\gamma)} H(\xi_t) = & \max_{(\theta_t,dI_t,c_t \in \mathcal{R})}\{W_t^{(1-\gamma)} u(c_t (1-\xi_t) )\Delta t \\ 
-	& + \mathrm{e}^{-\beta \Delta t} 
+	+ & \mathrm{e}^{-\beta \Delta t} 
         (p E_{W}[ W_{t+\Delta t}^{(1-\gamma)}] H^*
         +(1-p)    E_{W}[ W_{t+\Delta t}^{(1-\gamma)} H(\xi_{t+\Delta t})])\} 
 \end{aligned}$
 
+. . .
 
 $\begin{aligned}
     H(\xi_t)  =  & \max_{(\theta_t,dI_t,c_t \in \mathcal{R})}\{u(c_t (1-\xi_t) )\Delta t  \\ 
@@ -225,7 +251,7 @@ $\begin{aligned}
 
 - State Transition Dynamics
 
-![](images/dynamics.PNG)
+![](images/Dynamics.PNG)
 
 - Trading probability $p$ can be calibrated through a the Poisson distribution
 
@@ -257,9 +283,11 @@ V(W,t)= \max_{c\in\mathcal{D}(W,t)}u(cW)+\delta E[V(W^+|W,c)]\equiv(\mathcal{T}V
 
 ---------
 
-- Smooth Approximation applied on the Decomposed Illiquid Bellman: 
+### Smooth Approximation applied on the Decomposed Illiquid Bellman: 
 
-$$\hat{H}(\xi;\bm{a})= a_0+a_1\xi+a_2\xi^2+....+a_8\xi^8$$ Our goal is to find the parameters $a_1, ..., a_8$.
+- Our goal is to find the parameters $a_1, ..., a_8$
+
+$$\hat{H}(\xi;\bm{a})= a_0+a_1\xi+a_2\xi^2+....+a_8\xi^8$$ 
 
 - Value Function Iteration
 
