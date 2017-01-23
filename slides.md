@@ -10,9 +10,8 @@
 - Illiquid assets included the portfolios of many investors
 	+ long-term institutional investment (pension funds, endowments, sovereign wealth funds etc.)
 	+ personal finance (a house, real estate, private company shares, art, jewelry, etc.)
-- Need for a clear view on
-	+ how to incorporate their properties into the allocation decision
-	+ how illiquidity affects consumption over the long term
+- How to incorporate their properties into the allocation decision?
+- How illiquidity affects consumption over the long term?
 
 
 # What is liquidity?
